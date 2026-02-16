@@ -4,7 +4,7 @@ Realiza estos ejercicios en tu archivo `pages/09_Ejercicios.py`.
 
 ### Ejercicio 1: Saludo Simple
 Crea un campo de entrada de texto para que el usuario escriba su nombre.
-*   Si el nombre no está vacío, muestra un mensaje de bienvenida: "¡Hola, [Nombre]!".
+*   Si el nombre no está vacío, muestra un mensxaje de bienvenida: "¡Hola, [Nombre]!".  
 
 ### Ejercicio 2: Calculadora de Producto
 Pide al usuario dos números (usando `st.number_input`).
