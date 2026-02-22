@@ -52,19 +52,19 @@ tab1, tab2, tab3 = st.tabs(["Gatos", "Perros", "Aves"])
 
 with tab1:
     st.write("Un gato")
-    st.image("https://img.freepik.com/foto-gratis/gato-domestico-granja-al-aire-libre_52683-115856.jpg?semt=ais_user_personalization&w=740&q=80")
+    st.image("https://i.guim.co.uk/img/media/327aa3f0c3b8e40ab03b4ae80319064e401c6fbc/377_133_3542_2834/master/3542.jpg?width=620&dpr=1&s=none&crop=none")
     if st.button("👍", key="voto_gato"):
         st.toast("Te gusta esta mascota", icon="👍")
 
 with tab2:
     st.write("Un perro")
-    st.image("https://media.cnn.com/api/v1/images/stellar/prod/cnne-212344-monkey-selfie.jpeg?c=16x9&q=h_833,w_1480,c_fill")
+    st.image("https://images.ctfassets.net/denf86kkcx7r/2KGI03JSLCerDS7RD20OZP/b85317da255ed7119430759308414a49/perros_de_pastor_y_boyeros_-_1.jpg")
     if st.button("👍", key="voto_perro"):
         st.toast("Te gusta esta mascota", icon="👍")
 
 with tab3:
     st.write("Un Ave")
-    st.image("https://telusworldofscienceedmonton.ca/media/images/NEW_T.REX_Main_Webp.2e16d0ba.fill-1920x1080.format-webp.webp")
+    st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkAvK9Eh7Z11ZY8Nxx0bH3JSPfKPp2dzDiUMxjzBGTb_TSpCByzmZ5gv8XKQgB7And7BUVWw0TBprqa2uiHaTB-nPjsSm_M5-10nT1vUSMuw&s=10")
     if st.button("👍", key="voto_ave"):
         st.toast("Te gusta esta mascota", icon="👍")
 
@@ -80,9 +80,12 @@ with st.form("Caja de comentarios"):
     enviar = st.form_submit_button("Enviar")
 
     if enviar:
-        st.write("Formulario enviado")
-        st.write(f"Asunto: {asunto}")
-        st.write(mensaje)
+        if len(mensaje) == 0 or len(asunto) == 0:
+            st.write("Debe ingresar un asunto y un mensaje")
+        else:
+            st.write("Formulario enviado")
+            st.write(f"Asunto: {asunto}")
+            st.write(mensaje)
 
 st.divider()
 
@@ -113,24 +116,24 @@ st.divider()
 
 st.header("Ejercicio 7: Lista de Compras")
 
-if 'tareas' not in st.session_state:
-    st.session_state.tareas = []
+if 'Productos' not in st.session_state:
+    st.session_state.Productos = []
 
 with st.form("form_compras"):
-    nueva_tarea = st.text_input("Nueva tarea", key="input_tarea")
-    submit_tarea = st.form_submit_button("Agregar tarea")
+    nuevo_producto = st.text_input("Nuevo Producto", key="input_producto")
+    submit_producto = st.form_submit_button("Agregar Producto")
     
-    if submit_tarea and nueva_tarea:
-        st.session_state.tareas.append(nueva_tarea)
-        st.success(f"Tarea '*{nueva_tarea}*' agregada!")
+    if submit_producto and nuevo_producto:
+        st.session_state.Productos.append(nuevo_producto)
+        st.success(f"Producto '*{nuevo_producto}*' agregado!")
 
-st.write("### Tus Tareas:")
-if st.session_state.tareas:
-    for i, tarea in enumerate(st.session_state.tareas):
-        st.write(f"{i + 1}. {tarea}")
+st.write("### Tus Productos:")
+if st.session_state.Productos:
+    for i, producto in enumerate(st.session_state.Productos):
+        st.write(f"{i + 1}. {producto}")
     
     if st.button("Limpiar lista"):
-        st.session_state.tareas = []
+        st.session_state.Productos = []
         st.rerun()
 else:
     st.info("La lista está vacía.")
