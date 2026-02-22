@@ -48,24 +48,24 @@ st.divider()
 
 st.header("Ejercicio 4: Galería de Mascotas")
 
-tab1, tab2, tab3 = st.tabs(["Cerdo", "Mono", "T-Rex"]) 
+tab1, tab2, tab3 = st.tabs(["Gatos", "Perros", "Aves"]) 
 
 with tab1:
-    st.write("Un cerdo")
-    st.image("https://img.freepik.com/foto-gratis/cerdo-domestico-granja-al-aire-libre_52683-115856.jpg?semt=ais_user_personalization&w=740&q=80")
-    if st.button("👍", key="voto_cerdo"):
+    st.write("Un gato")
+    st.image("https://img.freepik.com/foto-gratis/gato-domestico-granja-al-aire-libre_52683-115856.jpg?semt=ais_user_personalization&w=740&q=80")
+    if st.button("👍", key="voto_gato"):
         st.toast("Te gusta esta mascota", icon="👍")
 
 with tab2:
-    st.write("Un mono")
+    st.write("Un perro")
     st.image("https://media.cnn.com/api/v1/images/stellar/prod/cnne-212344-monkey-selfie.jpeg?c=16x9&q=h_833,w_1480,c_fill")
-    if st.button("👍", key="voto_mono"):
+    if st.button("👍", key="voto_perro"):
         st.toast("Te gusta esta mascota", icon="👍")
 
 with tab3:
-    st.write("Un T-Rex")
+    st.write("Un Ave")
     st.image("https://telusworldofscienceedmonton.ca/media/images/NEW_T.REX_Main_Webp.2e16d0ba.fill-1920x1080.format-webp.webp")
-    if st.button("👍", key="voto_trex"):
+    if st.button("👍", key="voto_ave"):
         st.toast("Te gusta esta mascota", icon="👍")
 
 st.divider()
@@ -75,7 +75,7 @@ st.header("Ejercicio 5: Caja de Comentarios")
 with st.form("Caja de comentarios"):
     
     asunto = st.text_input("Asunto")
-    mensaje = st.text_input("Mensaje")
+    mensaje = st.text_area("Mensaje")
 
     enviar = st.form_submit_button("Enviar")
 
@@ -140,7 +140,8 @@ st.divider()
 st.header("Ejercicio 8: Gráfico Interactivo")
 
 with st.form("form_grafico"):
-    N = st.slider("Selecciona un número entre 10 y 100", 0, 150, 50)
+    # Rango ajustado de 10 a 100
+    N = st.slider("Selecciona un número entre 10 y 100", 10, 100)
     submit_grafico = st.form_submit_button("Generar / Regenerar")
 
 if submit_grafico:
@@ -149,9 +150,8 @@ if submit_grafico:
     else:
         lista = [random.randint(1, 100) for _ in range(N)]
         st.line_chart(lista)
-elif 'submit_grafico' not in locals():
-    # Mostrar un gráfico inicial o mensaje
+        st.success(f"Gráfico generado con {N} puntos aleatorios.")
+else:
     st.info("Ajusta el slider y presiona el botón para generar el gráfico.")
-
 st.divider()
 
